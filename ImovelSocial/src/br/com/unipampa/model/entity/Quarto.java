@@ -1,5 +1,7 @@
 package br.com.unipampa.model.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -8,8 +10,13 @@ import javax.persistence.Id;
 import br.com.unipampa.model.entity.enumeration.TipoQuarto;
 
 @Entity
-public class Quarto {
+public class Quarto implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8827358206689562726L;
+	
 	private Long id;
 	private TipoQuarto tipoQuarto;
 	private Boolean suite;

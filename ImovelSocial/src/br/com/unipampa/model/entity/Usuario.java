@@ -1,11 +1,14 @@
 package br.com.unipampa.model.entity;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -15,8 +18,13 @@ import br.com.unipampa.model.entity.enumeration.Escolaridade;
 import br.com.unipampa.model.entity.enumeration.Sexo;
 
 @Entity
-public class Usuario {
+public class Usuario implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2029474619985699183L;
+	
 	private Long id;
 	private String login;
 	private String senha;
@@ -28,9 +36,11 @@ public class Usuario {
 	private Sexo sexo;
 	private Boolean fumante;
 	private Escolaridade escolaridade;
+	private ArrayList<InteresseVaga> interesses;
 	private Proprietario proprietario;
 	private Inquilino inquilino;
 	private Locatario locatario;
+	private Locador locador;
 	
 	public Usuario() {
 		
@@ -129,7 +139,16 @@ public class Usuario {
 		this.escolaridade = escolaridade;
 	}
 
-	@OneToOne(mappedBy = "idUsuario")
+	@OneToMany
+	public ArrayList<InteresseVaga> getInteresse() {
+		return interesses;
+	}
+
+	public void setInteresse(ArrayList<InteresseVaga> interesses) {
+		this.interesses = interesses;
+	}
+
+	@OneToOne
 	public Proprietario getProprietario() {
 		return proprietario;
 	}
@@ -138,7 +157,7 @@ public class Usuario {
 		this.proprietario = proprietario;
 	}
 
-	@OneToOne(mappedBy = "idUsuario")
+	@OneToOne
 	public Inquilino getInquilino() {
 		return inquilino;
 	}
@@ -147,13 +166,22 @@ public class Usuario {
 		this.inquilino = inquilino;
 	}
 
-	@OneToOne(mappedBy = "idUsuario")
+	@OneToOne
 	public Locatario getLocatario() {
 		return locatario;
 	}
 
 	public void setLocatario(Locatario locatario) {
 		this.locatario = locatario;
+	}
+
+	@OneToOne
+	public Locador getLocador() {
+		return locador;
+	}
+
+	public void setLocador(Locador locador) {
+		this.locador = locador;
 	}
 	
 }

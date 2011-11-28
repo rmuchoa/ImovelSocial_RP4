@@ -1,12 +1,19 @@
 package br.com.unipampa.model.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class ImovelCompleto extends Imovel {
+public class ImovelCompleto extends Imovel implements Serializable {
 
-	//private Long id;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5219568873013667350L;
+	
 	private Double valorAluguel;
 	private Locatario locatario;
 	
@@ -23,6 +30,7 @@ public class ImovelCompleto extends Imovel {
 	}
 
 	@ManyToOne
+	@JoinColumn(name = "idLocatario")
 	public Locatario getLocatario() {
 		return locatario;
 	}

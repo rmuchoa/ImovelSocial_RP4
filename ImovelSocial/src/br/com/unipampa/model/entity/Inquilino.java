@@ -1,15 +1,22 @@
 package br.com.unipampa.model.entity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Inquilino {
+public class Inquilino implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3171508254550333430L;
+	
 	private Long id;
 	private Usuario usuario;
 	private ArrayList<Vaga> vaga;
@@ -28,6 +35,7 @@ public class Inquilino {
 	}
 
 	@OneToOne
+	@JoinColumn(name = "idUsuario")
 	public Usuario getUsuario() {
 		return usuario;
 	}
@@ -36,7 +44,7 @@ public class Inquilino {
 		this.usuario = usuario;
 	}
 
-	@OneToMany(mappedBy = "idInquilino")
+	@OneToMany
 	public ArrayList<Vaga> getVaga() {
 		return vaga;
 	}

@@ -1,15 +1,26 @@
 package br.com.unipampa.model.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import br.com.unipampa.model.entity.enumeration.TipoLogradouro;
 
 @Entity
-public class Imovel {
+@Inheritance(strategy = InheritanceType.JOINED)
+public class Imovel implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1522429232256368406L;
 	
 	private Long id;
 	private TipoLogradouro tipoLogradouro;
@@ -146,6 +157,7 @@ public class Imovel {
 	}
 
 	@ManyToOne
+	@JoinColumn(name = "idProprietario")
 	public Proprietario getProprietario() {
 		return proprietario;
 	}

@@ -1,27 +1,25 @@
 package br.com.unipampa.model.entity;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 
 @Entity
-public class Locatario implements Serializable {
+public class InteresseVaga implements Serializable {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -8429915141656617275L;
+	private static final long serialVersionUID = -5842070028955124155L;
 	
 	private Long id;
 	private Usuario usuario;
-	private ArrayList<ImovelCompleto> imoveisAlugados;
+	private Vaga vaga;
 	
-	public Locatario() {
+	public InteresseVaga() {
 		
 	}
 
@@ -34,7 +32,7 @@ public class Locatario implements Serializable {
 		this.id = id;
 	}
 
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "idUsuario")
 	public Usuario getUsuario() {
 		return usuario;
@@ -44,13 +42,14 @@ public class Locatario implements Serializable {
 		this.usuario = usuario;
 	}
 
-	@OneToMany
-	public ArrayList<ImovelCompleto> getImoveisAlugados() {
-		return imoveisAlugados;
+	@ManyToOne
+	@JoinColumn(name = "idVaga")
+	public Vaga getVaga() {
+		return vaga;
 	}
 
-	public void setImoveisAlugados(ArrayList<ImovelCompleto> imoveisAlugados) {
-		this.imoveisAlugados = imoveisAlugados;
+	public void setVaga(Vaga vaga) {
+		this.vaga = vaga;
 	}
-	
+
 }

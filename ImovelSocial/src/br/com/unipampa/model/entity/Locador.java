@@ -10,18 +10,18 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Locatario implements Serializable {
+public class Locador implements Serializable {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -8429915141656617275L;
+	private static final long serialVersionUID = 4939472357782898779L;
 	
 	private Long id;
 	private Usuario usuario;
-	private ArrayList<ImovelCompleto> imoveisAlugados;
+	private ArrayList<Vaga> vagas;
 	
-	public Locatario() {
+	public Locador() {
 		
 	}
 
@@ -45,12 +45,12 @@ public class Locatario implements Serializable {
 	}
 
 	@OneToMany
-	public ArrayList<ImovelCompleto> getImoveisAlugados() {
-		return imoveisAlugados;
-	}
-
-	public void setImoveisAlugados(ArrayList<ImovelCompleto> imoveisAlugados) {
-		this.imoveisAlugados = imoveisAlugados;
+	public ArrayList<Vaga> getVagas() {
+		return vagas;
 	}
 	
+	public void setVagas(ArrayList<Vaga> vagas) {
+		this.vagas = vagas;
+	}
+
 }

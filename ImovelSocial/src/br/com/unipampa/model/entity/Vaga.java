@@ -1,17 +1,29 @@
 package br.com.unipampa.model.entity;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
-public class Vaga {
+public class Vaga implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 586829243658648771L;
+	
 	private Long id;
 	private Double mensalidade;
 	private Boolean incluiDespesasAdicionais;
 	private Double valorDespesasAdicionais;
+	private ArrayList<InteresseVaga> interesses;
 	private Inquilino inquilino;
+	private Locador locador;
 	
 	public Vaga() {
 		
@@ -50,13 +62,33 @@ public class Vaga {
 		this.valorDespesasAdicionais = valorDespesasAdicionais;
 	}
 
+	@OneToMany
+	public ArrayList<InteresseVaga> getInteresses() {
+		return interesses;
+	}
+
+	public void setInteresses(ArrayList<InteresseVaga> interesses) {
+		this.interesses = interesses;
+	}
+
 	@ManyToOne
+	@JoinColumn(name = "idInquilino")
 	public Inquilino getInquilino() {
 		return inquilino;
 	}
 
 	public void setInquilino(Inquilino inquilino) {
 		this.inquilino = inquilino;
+	}
+
+	@ManyToOne
+	@JoinColumn(name = "idLocador")
+	public Locador getLocador() {
+		return locador;
+	}
+
+	public void setLocador(Locador locador) {
+		this.locador = locador;
 	}
 	
 }
