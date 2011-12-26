@@ -1,10 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
-  <persistence-unit name="HibernateStandaloneEntityManagerPU" transaction-type="RESOURCE_LOCAL">
+  <persistence-unit name="ImovelSocialPU" transaction-type="RESOURCE_LOCAL">
     
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
     
-    <class>br.com.targettrust.hibernate.entities.Usuario</class>
+	<!-- Mapped entities from the database -->
+    <class>br.com.unipampa.model.entity.Usuario</class>
+	<class>br.com.unipampa.model.entity.Imovel</class>
+	<class>br.com.unipampa.model.entity.ImovelCompleto</class>
+	<class>br.com.unipampa.model.entity.ImovelVaga</class>
+	<class>br.com.unipampa.model.entity.Inquilino</class>
+	<class>br.com.unipampa.model.entity.Proprietario</class>
+	<class>br.com.unipampa.model.entity.Locatario</class>
+	<class>br.com.unipampa.model.entity.Locador</class>
+	<class>br.com.unipampa.model.entity.Quarto</class>
+	<class>br.com.unipampa.model.entity.Vaga</class>
+	<class>br.com.unipampa.model.entity.InteresseVaga</class>
     
     <properties>
         
@@ -13,41 +24,15 @@
 		<property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/ImovelSocial" />
 		<property name="hibernate.connection.username" value="postgres" />
 		<property name="hibernate.connection.password" value="postgres" />
+      	<property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
 		
 		<!-- SQL dialect -->
 		<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
-
-		<!-- Configuração do C3P0 // Database Connection Pooling for use in Production -->
-		<property name="hibernate.c3p0.max_size" value="10" />
-		<property name="hibernate.c3p0.min_size" value="2" />
-		<property name="hibernate.c3p0.timeout" value="5000" />
-		<property name="hibernate.c3p0.max_statements" value="10" />
-		<property name="hibernate.c3p0.idle_test_period" value="3000" />
-		<property name="hibernate.c3p0.acquire_increment" value="2" />
-
-		<!-- Echo all executed SQL to stdout -->
-		<property name="hibernate.show_sql" value="true" />
-		<property name="hibernate.generate_statistics" value="false" />
-		<property name="hibernate.use_sql_comments" value="true" />
-		<property name="hibernate.format_sql" value="true" />
 
 		<!-- Create, Drop and re-create, or Update the database schema on startup -->
 		<!-- <property name="hibernate.hbm2ddl.auto" value="update" /> -->
 		<property name="hibernate.hbm2ddl.auto" value="create" />
 		<!--  <property name="hibernate.hbm2ddl.auto" value="create-drop" /> -->
-		
-		<!-- Mapped entities from the database -->
-		<mapping class="br.com.unipampa.model.entity.Usuario" />
-		<mapping class="br.com.unipampa.model.entity.Imovel" />
-		<mapping class="br.com.unipampa.model.entity.ImovelCompleto" />
-		<mapping class="br.com.unipampa.model.entity.ImovelVaga" />
-		<mapping class="br.com.unipampa.model.entity.Inquilino" />
-		<mapping class="br.com.unipampa.model.entity.Proprietario" />
-		<mapping class="br.com.unipampa.model.entity.Locatario" />
-		<mapping class="br.com.unipampa.model.entity.Locador" />
-		<mapping class="br.com.unipampa.model.entity.Quarto" />
-		<mapping class="br.com.unipampa.model.entity.Vaga" />
-		<mapping class="br.com.unipampa.model.entity.InteresseVaga" />
 
     </properties>
   </persistence-unit>

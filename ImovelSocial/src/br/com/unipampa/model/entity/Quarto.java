@@ -1,11 +1,14 @@
 package br.com.unipampa.model.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import br.com.unipampa.model.entity.enumeration.TipoQuarto;
 
@@ -19,6 +22,7 @@ public class Quarto implements Serializable {
 	
 	private Long id;
 	private TipoQuarto tipoQuarto;
+	private ArrayList<Vaga> vagas;
 	private Boolean suite;
 	private Boolean mobiliado;
 	
@@ -42,6 +46,15 @@ public class Quarto implements Serializable {
 
 	public void setTipoQuarto(TipoQuarto tipoQuarto) {
 		this.tipoQuarto = tipoQuarto;
+	}
+
+	@OneToMany(cascade=CascadeType.ALL)
+	public ArrayList<Vaga> getVagas() {
+		return vagas;
+	}
+
+	public void setVagas(ArrayList<Vaga> vagas) {
+		this.vagas = vagas;
 	}
 
 	public Boolean isSuite() {

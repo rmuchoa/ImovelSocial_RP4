@@ -2,9 +2,9 @@ package br.com.unipampa.model.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class ImovelCompleto extends Imovel implements Serializable {
@@ -29,8 +29,7 @@ public class ImovelCompleto extends Imovel implements Serializable {
 		this.valorAluguel = valorAluguel;
 	}
 
-	@ManyToOne
-	@JoinColumn(name = "idLocatario")
+	@OneToOne(cascade=CascadeType.ALL)
 	public Locatario getLocatario() {
 		return locatario;
 	}

@@ -70,13 +70,12 @@ public class ImovelDAO {
 	
 	public Imovel selectById(int id) {
 		em = PersistenceFactory.getEntityManager();
-		try {
-			return em.find(Imovel.class, id);
-		} finally {
-			em.close();
-		}
+		Imovel i = em.find(Imovel.class, id);
+		em.close();
+		return i;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<Imovel> selectAll() {
         em = PersistenceFactory.getEntityManager();
         String hql = "from " + Imovel.class.getSimpleName();

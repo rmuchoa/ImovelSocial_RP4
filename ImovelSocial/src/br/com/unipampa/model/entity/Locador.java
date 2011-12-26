@@ -1,12 +1,11 @@
 package br.com.unipampa.model.entity;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -19,7 +18,7 @@ public class Locador implements Serializable {
 	
 	private Long id;
 	private Usuario usuario;
-	private ArrayList<Vaga> vagas;
+	private Vaga vaga;
 	
 	public Locador() {
 		
@@ -34,7 +33,7 @@ public class Locador implements Serializable {
 		this.id = id;
 	}
 
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "idUsuario")
 	public Usuario getUsuario() {
 		return usuario;
@@ -44,13 +43,14 @@ public class Locador implements Serializable {
 		this.usuario = usuario;
 	}
 
-	@OneToMany
-	public ArrayList<Vaga> getVagas() {
-		return vagas;
+	@OneToOne
+	@JoinColumn(name = "idVaga")
+	public Vaga getVagas() {
+		return vaga;
 	}
 	
-	public void setVagas(ArrayList<Vaga> vagas) {
-		this.vagas = vagas;
+	public void setVagas(Vaga vaga) {
+		this.vaga = vaga;
 	}
 
 }

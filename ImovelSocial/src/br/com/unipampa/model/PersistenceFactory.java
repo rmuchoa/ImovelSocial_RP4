@@ -6,13 +6,13 @@ import javax.persistence.Persistence;
 
 public class PersistenceFactory {
 
-	private static EntityManagerFactory EntityManagerFactory;
+	private static EntityManagerFactory emf;
     
     private static EntityManagerFactory getEntityManagerFactory() {
-    	if (EntityManagerFactory == null) {
-            EntityManagerFactory = Persistence.createEntityManagerFactory("ImovelSocialPU");
+    	if (emf == null) {
+            emf = Persistence.createEntityManagerFactory("ImovelSocialPU");
     	}
-    	return EntityManagerFactory;
+    	return emf;
     }
     
     public static EntityManager getEntityManager() {

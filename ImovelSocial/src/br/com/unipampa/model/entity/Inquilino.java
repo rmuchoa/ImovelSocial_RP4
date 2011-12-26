@@ -1,12 +1,12 @@
 package br.com.unipampa.model.entity;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -19,7 +19,7 @@ public class Inquilino implements Serializable {
 	
 	private Long id;
 	private Usuario usuario;
-	private ArrayList<Vaga> vaga;
+	private Vaga vaga;
 	
 	public Inquilino() {
 		
@@ -34,7 +34,7 @@ public class Inquilino implements Serializable {
 		this.id = id;
 	}
 
-	@OneToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "idUsuario")
 	public Usuario getUsuario() {
 		return usuario;
@@ -44,12 +44,13 @@ public class Inquilino implements Serializable {
 		this.usuario = usuario;
 	}
 
-	@OneToMany
-	public ArrayList<Vaga> getVaga() {
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="idVaga")
+	public Vaga getVaga() {
 		return vaga;
 	}
 
-	public void setVaga(ArrayList<Vaga> vaga) {
+	public void setVaga(Vaga vaga) {
 		this.vaga = vaga;
 	}
 	

@@ -4,12 +4,12 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
@@ -37,10 +37,8 @@ public class Usuario implements Serializable {
 	private Boolean fumante;
 	private Escolaridade escolaridade;
 	private ArrayList<InteresseVaga> interesses;
-	private Proprietario proprietario;
-	private Inquilino inquilino;
-	private Locatario locatario;
-	private Locador locador;
+	private ArrayList<Proprietario> proprietarioImoveis;
+	private ArrayList<Inquilino> inquilinoImoveis;
 	
 	public Usuario() {
 		
@@ -139,49 +137,31 @@ public class Usuario implements Serializable {
 		this.escolaridade = escolaridade;
 	}
 
-	@OneToMany
-	public ArrayList<InteresseVaga> getInteresse() {
+	@OneToMany(cascade=CascadeType.ALL)
+	public ArrayList<InteresseVaga> getInteresses() {
 		return interesses;
 	}
 
-	public void setInteresse(ArrayList<InteresseVaga> interesses) {
+	public void setInteresses(ArrayList<InteresseVaga> interesses) {
 		this.interesses = interesses;
 	}
 
-	@OneToOne
-	public Proprietario getProprietario() {
-		return proprietario;
+	@OneToMany(cascade=CascadeType.ALL)
+	public ArrayList<Proprietario> getProprietario() {
+		return proprietarioImoveis;
 	}
 
-	public void setProprietario(Proprietario proprietario) {
-		this.proprietario = proprietario;
+	public void setProprietario(ArrayList<Proprietario> proprietarioImoveis) {
+		this.proprietarioImoveis = proprietarioImoveis;
 	}
 
-	@OneToOne
-	public Inquilino getInquilino() {
-		return inquilino;
+	@OneToMany(cascade=CascadeType.ALL)
+	public ArrayList<Inquilino> getInquilino() {
+		return inquilinoImoveis;
 	}
 
-	public void setInquilino(Inquilino inquilino) {
-		this.inquilino = inquilino;
-	}
-
-	@OneToOne
-	public Locatario getLocatario() {
-		return locatario;
-	}
-
-	public void setLocatario(Locatario locatario) {
-		this.locatario = locatario;
-	}
-
-	@OneToOne
-	public Locador getLocador() {
-		return locador;
-	}
-
-	public void setLocador(Locador locador) {
-		this.locador = locador;
+	public void setInquilino(ArrayList<Inquilino> inquilinoImoveis) {
+		this.inquilinoImoveis = inquilinoImoveis;
 	}
 	
 }

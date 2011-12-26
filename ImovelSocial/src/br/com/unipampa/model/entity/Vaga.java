@@ -5,9 +5,8 @@ import java.util.ArrayList;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Vaga implements Serializable {
@@ -19,11 +18,11 @@ public class Vaga implements Serializable {
 	
 	private Long id;
 	private Double mensalidade;
-	private Boolean incluiDespesasAdicionais;
-	private Double valorDespesasAdicionais;
+	private String servicosIncluidos;
+	private String servicosNaoIncluidos;
+	private Double despesasAdicionais;
 	private ArrayList<InteresseVaga> interesses;
 	private Inquilino inquilino;
-	private Locador locador;
 	
 	public Vaga() {
 		
@@ -46,20 +45,28 @@ public class Vaga implements Serializable {
 		this.mensalidade = mensalidade;
 	}
 
-	public Boolean isIncluiDespesasAdicionais() {
-		return incluiDespesasAdicionais;
+	public String getServicosIncluidos() {
+		return servicosIncluidos;
 	}
 
-	public void setIncluiDespesasAdicionais(Boolean incluiDespesasAdicionais) {
-		this.incluiDespesasAdicionais = incluiDespesasAdicionais;
+	public void setServicosIncluidos(String servicosIncluidos) {
+		this.servicosIncluidos = servicosIncluidos;
 	}
 
-	public Double getValorDespesasAdicionais() {
-		return valorDespesasAdicionais;
+	public String getServicosNaoIncluidos() {
+		return servicosNaoIncluidos;
 	}
 
-	public void setValorDespesasAdicionais(Double valorDespesasAdicionais) {
-		this.valorDespesasAdicionais = valorDespesasAdicionais;
+	public void setServicosNaoIncluidos(String servicosNaoIncluidos) {
+		this.servicosNaoIncluidos = servicosNaoIncluidos;
+	}
+
+	public Double getDespesasAdicionais() {
+		return despesasAdicionais;
+	}
+
+	public void setDespesasAdicionais(Double despesasAdicionais) {
+		this.despesasAdicionais = despesasAdicionais;
 	}
 
 	@OneToMany
@@ -71,24 +78,13 @@ public class Vaga implements Serializable {
 		this.interesses = interesses;
 	}
 
-	@ManyToOne
-	@JoinColumn(name = "idInquilino")
+	@OneToOne
 	public Inquilino getInquilino() {
 		return inquilino;
 	}
 
 	public void setInquilino(Inquilino inquilino) {
 		this.inquilino = inquilino;
-	}
-
-	@ManyToOne
-	@JoinColumn(name = "idLocador")
-	public Locador getLocador() {
-		return locador;
-	}
-
-	public void setLocador(Locador locador) {
-		this.locador = locador;
 	}
 	
 }

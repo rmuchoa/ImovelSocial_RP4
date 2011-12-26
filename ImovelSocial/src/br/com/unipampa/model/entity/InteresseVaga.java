@@ -2,6 +2,7 @@ package br.com.unipampa.model.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -32,7 +33,7 @@ public class InteresseVaga implements Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "idUsuario")
 	public Usuario getUsuario() {
 		return usuario;
@@ -42,7 +43,7 @@ public class InteresseVaga implements Serializable {
 		this.usuario = usuario;
 	}
 
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "idVaga")
 	public Vaga getVaga() {
 		return vaga;
