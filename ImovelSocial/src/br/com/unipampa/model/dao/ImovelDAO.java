@@ -6,6 +6,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
 import br.com.unipampa.model.PersistenceFactory;
 import br.com.unipampa.model.entity.Imovel;
 
@@ -19,17 +22,21 @@ public class ImovelDAO {
 	
 	@SuppressWarnings("finally")
 	public Imovel insert(Imovel imovel) {
-		em = PersistenceFactory.getEntityManager();
-		EntityTransaction transaction = em.getTransaction();
+		//em = PersistenceFactory.getEntityManager();
+		Session session = PersistenceFactory.getSession();
+		//EntityTransaction transaction = em.getTransaction();
+		Transaction transaction = session.beginTransaction();
 		try {
-			transaction.begin();
-			em.persist(imovel);
+			//transaction.begin();
+			//em.persist(usuario);
+			session.persist(imovel);
 			transaction.commit();
 		} catch(Exception e) {
 			e.printStackTrace();
 			transaction.rollback();
 		} finally {
-			em.close();
+			//em.close();
+			session.close();
 			return imovel;
 		}
 	}

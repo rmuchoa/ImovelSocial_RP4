@@ -147,20 +147,20 @@ public class Usuario implements Serializable {
 	}
 
 	@OneToMany(cascade=CascadeType.ALL)
-	public ArrayList<Proprietario> getProprietario() {
+	public ArrayList<Proprietario> getProprietarios() {
 		return proprietarioImoveis;
 	}
 
-	public void setProprietario(ArrayList<Proprietario> proprietarioImoveis) {
+	public void setProprietarios(ArrayList<Proprietario> proprietarioImoveis) {
 		this.proprietarioImoveis = proprietarioImoveis;
 	}
 
 	@OneToMany(cascade=CascadeType.ALL)
-	public ArrayList<Inquilino> getInquilino() {
+	public ArrayList<Inquilino> getInquilinos() {
 		return inquilinoImoveis;
 	}
 
-	public void setInquilino(ArrayList<Inquilino> inquilinoImoveis) {
+	public void setInquilinos(ArrayList<Inquilino> inquilinoImoveis) {
 		this.inquilinoImoveis = inquilinoImoveis;
 	}
 	

@@ -13,11 +13,6 @@
 		<property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/jpa</property>
 		<property name="hibernate.connection.username">postgres</property>
 		<property name="hibernate.connection.password">postgres</property>
-		
-		<!-- <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property> 
-			<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/jpa</property> 
-			<property name="hibernate.connection.username">root</property> <property 
-			name="hibernate.connection.password">root</property> -->
 
 		<!-- SQL dialect -->
 		<property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
@@ -42,7 +37,17 @@
 		<property name="hibernate.hbm2ddl.auto">create</property>
 		<!--  <property name="hibernate.hbm2ddl.auto">create-drop</property> -->
 
-		<mapping class="br.com.targettrust.hibernate.entities.Usuario" />
+		<mapping class="br.com.unipampa.model.entity.Usuario" />
+		<mapping class="br.com.unipampa.model.entity.Imovel" />
+		<mapping class="br.com.unipampa.model.entity.ImovelCompleto" />
+		<mapping class="br.com.unipampa.model.entity.ImovelVaga" />
+		<mapping class="br.com.unipampa.model.entity.Inquilino" />
+		<mapping class="br.com.unipampa.model.entity.Proprietario" />
+		<mapping class="br.com.unipampa.model.entity.Locatario" />
+		<mapping class="br.com.unipampa.model.entity.Locador" />
+		<mapping class="br.com.unipampa.model.entity.Quarto" />
+		<mapping class="br.com.unipampa.model.entity.Vaga" />
+		<mapping class="br.com.unipampa.model.entity.InteresseVaga" />
 
 	</session-factory>
 </hibernate-configuration>
